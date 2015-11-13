@@ -88,6 +88,9 @@ These basics should get your started. Hopefully way faster than using React Nati
 
 If you need to look at a working example, check out the example in `RJNavigatorExample` directory.
 
+## Screenshots (of the example app)
+
+![rj-navigator](https://cloud.githubusercontent.com/assets/216346/11151788/cd035922-89e3-11e5-905a-f2e19db1e90c.gif)
 
 
 ## Running the Example App
