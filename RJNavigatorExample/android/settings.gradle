@@ -1,0 +1,3 @@
+rootProject.name = 'RJNavigatorExample'
+
+include ':app'
