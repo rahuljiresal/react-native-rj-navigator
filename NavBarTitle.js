@@ -32,7 +32,7 @@ var NavBarTitle = React.createClass({
             );
         }
         else {
-            return text;
+            return child;
         }
     },
 });
