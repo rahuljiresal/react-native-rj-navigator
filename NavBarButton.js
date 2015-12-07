@@ -8,18 +8,27 @@ var React = require('react-native');
 var {
     TouchableOpacity,
     Text,
-    StyleSheet
+    StyleSheet,
+    Image
     } = React;
 
 var NavBarButton = React.createClass({
 
     render: function() {
         var alignment = (this.props.side === 'left') ? styles.navBarLeftButton : styles.navBarRightButton;
+        var child;
+        if (this.props.text) {
+            child = <Text style={[styles.navBarButtonText, { color: this.props.color || 'black' }]}>{this.props.text}</Text>;
+        }
+        else if (this.props.source) {
+            child = <Image style={styles.navBarTitleImage} source={this.props.source}/>
+        }
+
         return (
             <TouchableOpacity
                 style={ alignment }
                 onPress={this.props.onPress}>
-                <Text style={[styles.navBarButtonText, { color: this.props.color || 'black' }]}>{this.props.text}</Text>
+                { child }
             </TouchableOpacity>
         );
     },
@@ -36,7 +45,11 @@ var styles = StyleSheet.create({
         fontSize: 16,
         marginVertical: 10,
     },
-
+    navBarTitleImage: {
+        height: 24,
+        width: 24,
+        marginVertical: 10
+    }
 })
 
 module.exports = NavBarButton;
