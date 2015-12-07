@@ -21,7 +21,7 @@ var NavBarButton = React.createClass({
             child = <Text style={[styles.navBarButtonText, { color: this.props.color || 'black' }]}>{this.props.text}</Text>;
         }
         else if (this.props.source) {
-            child = <Image style={styles.navBarTitleImage} source={this.props.source}/>
+            child = <Image style={[styles.navBarTitleImage, {tintColor: this.props.color || 'black'}]} source={this.props.source}/>
         }
 
         return (
