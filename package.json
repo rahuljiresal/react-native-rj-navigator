@@ -1,6 +1,6 @@
 {
   "name": "react-native-rj-navigator",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A *better* Navigator for React Native. Delegates all the work for creating navbar buttons and titles to the components being pushed.",
   "main": "RJNavigator.js",
   "scripts": {
