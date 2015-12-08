@@ -43,12 +43,10 @@ var styles = StyleSheet.create({
     },
     navBarButtonText: {
         fontSize: 16,
-        marginVertical: 10,
     },
     navBarTitleImage: {
         height: 24,
         width: 24,
-        marginVertical: 10
     }
 })
 

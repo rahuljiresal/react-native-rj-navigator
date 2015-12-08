@@ -42,12 +42,12 @@ var styles = StyleSheet.create({
         color: 'black',
         fontWeight: '500',
         fontSize: 16,
-        marginVertical: 10,
+        marginVertical: 4,
     },
     navBarTitleImage: {
         height: 24,
         width: 24,
-        marginVertical: 10
+        marginVertical: 4
     }
 });
 

@@ -5,9 +5,11 @@
 'use strict';
 
 var React = require('react-native'),
+    Colors = require('./colors'),
     Navigator = require('react-native-rj-navigator').Navigator,
-    NavBarButton = require('react-native-rj-navigator').NavBarButton,
-    NavBarTitle = require('react-native-rj-navigator').NavBarTitle;
+    NavigationBarButton = require('react-native-rj-navigator').NavBarButton,
+    NavigationBar = require('./navigation-bar'),
+    NavigationBarTitle = require('react-native-rj-navigator').NavBarTitle;
 
 var {
   AppRegistry,
@@ -19,39 +21,64 @@ var {
 } = React;
 
 var ViewTwo = React.createClass({
-  _setNavigationBar: function() {
-        this.props.navComponent.setNavItems({
-            title:{
-                component: (
-                    <View
-                        style={styles.segmentControlContainer} >
-                        <SegmentedControlIOS
-                            style={ styles.segmentControl }
-                            values={['One', 'Two']}
-                            selectedIndex={1}
-                        />
-                    </View>                    
-                  ),
-            },
-            rightItem:{
-                component: (
-                    <NavBarButton text={'Button'} />
-                    ),
-                event: function() {
-                    AlertIOS.alert('Done', 'You clicked Done.');
-                }.bind(this)
-            }
-        });
+
+    getInitialState: function() {
+        return {
+            title: 'Old Title'
+        };
     },
 
-    componentWillMount: function() {
-        this._setNavigationBar();
+    _navigationBarTitle: function() {
+        return (
+            <NavigationBarTitle 
+                text={this.state.title} 
+                onPress={ () => AlertIOS.alert('Title', 'This is a callback on the title') }
+            />
+        );
     },
 
+    _navigationBarLeftButton: function() {
+        return (
+            <NavigationBarButton
+                side={'left'}
+                text={'Back'}
+                color={Colors.defaultIOSTintColor}
+                onPress={ () => this.props.navigator.pop() }
+            />
+        );
+    },
+
+    _navigationBarRightButton: function() {
+        return (
+            <NavigationBarButton
+                text={'Done'}
+                color={Colors.defaultIOSTintColor}
+                onPress={function() {
+                    this.setState({
+                        title: 'Changed Name'
+                    });
+                }.bind(this)}
+            />
+        );
+    },
+
+    _navigationBar: function() {
+        return (
+            <NavigationBar
+                title={ this._navigationBarTitle() }
+                leftButton={ this._navigationBarLeftButton() }
+                rightButton={ this._navigationBarRightButton() }
+            />
+        );
+    },
+    
     render: function() {
         return (
-            <View style={styles.viewTwo}>
-                <Text>This is view #2.</Text>
+            <View style={{flex: 1}} >
+                { this._navigationBar() }
+                <View style={styles.viewTwo}>
+                    <Text>This is view #2.</Text>
+                </View>
             </View>
         );
     }
