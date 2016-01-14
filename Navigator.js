@@ -46,9 +46,7 @@ class RJNavigator extends React.Component {
         else if (typeof route.component === 'function') {
             newComponent = <route.component navigator={navigator} navComponent={this} {...route.props}/>
         }
-        return (
-                {newComponent}
-        )
+        return newComponent;
     }
 }
 

@@ -18,7 +18,8 @@ var {
     View,
     AlertIOS,
     SwitchIOS,
-    Navigator
+    Navigator,
+    TouchableOpacity
 } = React;
 
 var ViewOne = React.createClass({
@@ -74,11 +75,18 @@ var ViewOne = React.createClass({
     },
 
     render: function() {
+        var ViewTwo = require('./view-two');
         return (
             <View style={{flex: 1}}> 
                 { this._navigationBar() }
                 <View style={styles.viewOne}>
-                    <Text>This is view #1.</Text>
+                    <TouchableOpacity onPress={() => {
+                        this.props.navigator.push({
+                            component: ViewTwo  
+                        });
+                    }}>
+                        <Text>This is view #1.</Text>
+                    </TouchableOpacity>
                 </View>
             </View> 
         );

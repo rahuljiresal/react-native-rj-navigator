@@ -9,6 +9,7 @@ var React = require('react-native'),
     Navigator = require('react-native-rj-navigator').Navigator,
     NavigationBarButton = require('react-native-rj-navigator').NavBarButton,
     NavigationBar = require('./navigation-bar'),
+    ViewOne = require('./view-one'),
     NavigationBarTitle = require('react-native-rj-navigator').NavBarTitle;
 
 var {
@@ -17,7 +18,8 @@ var {
   Text,
   View,
   AlertIOS,
-  SegmentedControlIOS
+  SegmentedControlIOS,
+  TouchableOpacity
 } = React;
 
 var ViewTwo = React.createClass({
@@ -77,7 +79,13 @@ var ViewTwo = React.createClass({
             <View style={{flex: 1}} >
                 { this._navigationBar() }
                 <View style={styles.viewTwo}>
+                	<TouchableOpacity onPress={() => {
+                		this.props.navigator.push({
+                			component: ViewOne	
+                		});
+                	}}>
                     <Text>This is view #2.</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
