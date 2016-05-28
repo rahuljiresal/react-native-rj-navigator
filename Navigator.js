@@ -2,7 +2,8 @@
  * Created by Rahul Jiresal on 11/12/15.
  */
 
-var React = require('react-native');
+var ReactNative = require('react-native');
+var React = require('react');
 
 var {
     StyleSheet,
@@ -11,7 +12,7 @@ var {
     TouchableOpacity,
     View,
     Image
-    } = React;
+    } = ReactNative;
 
 class RJNavigator extends React.Component {
     constructor(props) {

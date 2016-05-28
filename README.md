@@ -4,11 +4,9 @@
 
 ## Overview
 
-If you've done any Native iOS Development, you know that iOS allows you to access items on the NavigationBar from within the underlying ViewController. You can add `selectors` to listen to the events on these items too.
+RJNavigator is a wrapper written on top of React Native's [Navigator](https://facebook.github.io/react-native/docs/navigator.html). RJNavigator passes the instance of itself to all the components being pushed on to it. This means, you have `this.props.navigator` in all the components to use.
 
-[Navigator](https://facebook.github.io/react-native/docs/navigator.html) on React Native is not the greatest. If you try to use it out of box, you have to create an object of the `routeMapper` and pass it to the `Navigator.NavigationBar`. This has to be done in the Component that creates the Navigator, and not in the individual sub-components that are being pushed on to the Navigator (or the `initialRoute`). This means that all the logic that belongs to the views being pushed can easily end up being in the parent component. Also, it makes it hard to access some things from the components being pushed. This gets annoying quite fast! This problem is discussed quite comprehensively on React Native's project page in [this GitHub issue](https://github.com/facebook/react-native/issues/2615). 
-
-`react-native-j-navigator` is a wrapper over React Native's Navigator to fix this issue. You can now specify the NavigationBar items from within the underlying Views that it belongs to. Check out the following code for usage.
+You'll also need a navigation bar. I highly recommend using [react-native-navbar](https://github.com/react-native-fellowship/react-native-navbar) with RJNavigator.
 
 ## Usage
 
@@ -18,6 +16,7 @@ First of all, you need to require the following components.
 
 ``` javascript
 var Navigator = require('react-native-rj-navigator').Navigator;
+	// if you're using the navbar, you might need the following ones too
 	NavBarButton = require('react-native-rj-navigator').NavBarButton,
     NavBarTitle = require('react-native-rj-navigator').NavBarTitle;
 ```
@@ -41,32 +40,7 @@ var RJNavigatorExample = React.createClass({
 
 ```
 
-#### Set Navigation Items
-
-Now, in the `componentWillMount` method of the `RootView`, call `this.props.navComponent.setNavItems` and send the following object as a parameter.
-
-``` javascript
-this.props.navComponent.setNavItems({
-	title: {
-    	component: (
-          <NavBarTitle text={'Root View'} />
-	    ),
-    	event: function() {
-  			AlertIOS.alert('Title', 'This is a callback on the title');
-		}.bind(this)
-	},
-	leftItem: {
-      	component: (), 
-      	event: function() {}
-	},
-	rightItem: {
-      component: (),
-      event: function() {}
-	}
-})
-```
-
-#### Push New Views
+#### Pushing views on the navigation stack
 
 You can push new components on the Navigator Stack using one of the following
 
@@ -99,10 +73,6 @@ If you need to look at a working example, check out the example in `RJNavigatorE
 1. Go to the example directory and run `nam install`. 
 2. Open the `RJNavigatorExample/ios/RJNavigatorExample.xcodeproj` file to run it in Xcode.
 3. Run the file, the React Native Packager should run and the project should run in the iOS simulator.
-
-## To Do...
-
-One of my main future goals is to make sure the components in the NavigationBar can be modified (after they're rendered) from the underlying view. I don't have a need for that right now, but it'll be the first thing I do as soon as I need it.
 
 ## Questions
 

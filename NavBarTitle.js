@@ -4,14 +4,15 @@
 
 'use strict';
 
-var React = require('react-native');
+var ReactNative = require('react-native');
+var React = require('react');
 
 var {
     TouchableOpacity,
     Text,
     StyleSheet,
     Image
-    } = React;
+    } = ReactNative;
 
 var NavBarTitle = React.createClass({
 

@@ -4,7 +4,7 @@
 
 'use strict';
 
-var React = require('react-native'),
+var ReactNative = require('react-native'),
     Navigator = require('./Navigator'),
     NavBarTitle = require('./NavBarTitle'),
     NavBarButton = require('./NavBarButton');
