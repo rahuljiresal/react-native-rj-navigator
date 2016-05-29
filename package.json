@@ -1,6 +1,6 @@
 {
   "name": "react-native-rj-navigator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A wrapper over Navigator for React Native.",
   "main": "RJNavigator.js",
   "scripts": {

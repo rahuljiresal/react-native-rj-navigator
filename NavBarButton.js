@@ -38,9 +38,11 @@ var NavBarButton = React.createClass({
 var styles = StyleSheet.create({
     navBarLeftButton: {
         paddingLeft: 10,
+        justifyContent: 'center'
     },
     navBarRightButton: {
         paddingRight: 10,
+        justifyContent: 'center'
     },
     navBarButtonText: {
         fontSize: 16,
