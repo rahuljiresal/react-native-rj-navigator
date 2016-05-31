@@ -30,7 +30,10 @@ class RJNavigator extends React.Component {
                 style={{flex: 1, backgroundColor: 'white'}}
                 initialRoute={initialRoute}
                 renderScene={this._renderScene.bind(this)}
-                configureScene={ route => route.sceneConfig || Navigator.SceneConfigs.FloatFromRight }
+                configureScene={ (route) => ({
+                    ...route.sceneConfig || Navigator.SceneConfigs.FloatFromRight,
+                    gestures: route.gestures || (route.sceneConfig && route.sceneConfig.gestures) || Navigator.SceneConfigs.FloatFromRight.gestures
+                })}
             />
         );
     }
